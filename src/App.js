@@ -12,14 +12,6 @@ import image75 from './components/Navbar/image 75.svg';
 import image73 from './components/Navbar/image 73.svg';
 import resuableimage from './components/Navbar/SmartReusables.svg';
 
-
- 
-
-
-   
-
-
-
 const PFontFactor = (width) =>{
   let factor = width > 500 ? Math.trunc(0.005*(width - 500)) : 0
   return factor
@@ -99,46 +91,36 @@ font-size: 1rem;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
-
 `;
 
-
-
- const CardDiv=styled.div`
- let width = useWindowWidth(window.innerWidth)
+ const CardDiv=styled.div.attrs(props =>{
+  let width = useWindowWidth(window.innerWidth)
   return {
           pageWidth: width
   }
-  border-radius: 1.25rem;
+ })`
+ border-radius: 1.25rem;
 background: #FFF;
-box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
- 
+box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25); 
  max-width: 30%;
  float:center;
- 
  `;
 
-
-
-
-
-
-
-
 const SectionBlock=styled.div`
-
-        display: block;
-      
-        text-align: center;
-        background-color=green;
+display: block;
+text-align: center;
+background-color: green;
 `;
+
+
 const flexSection=styled.div`
-  display: flex;
-        flex-wrap: wrap;
-        text-align: center;
+display: flex;
+flex-wrap: wrap;
+ text-align: center;
         align-item:center;
         justify-content: space-between;
 `;
+
  const SectionPara=styled.p.attrs(props =>{
   let width = useWindowWidth(window.innerWidth)
   return {
@@ -155,41 +137,23 @@ font-weight: 400;
 line-height: 1.5rem; /* 120% */`;
 
 
- const BlockDiv=styled.div.attrs(props =>{
-  let width = useWindowWidth(window.innerWidth)
-   return {
-           pageWidth: width
-   }
-  })`
+ const BlockDiv=styled.div`
  display:block;
- align-items:center;
- justify-content:center;
  padding:1vh 1vw;
  //Margin:1vh 1vw;
  `;
 
  const HeroSection=styled(BlockDiv)`
  `;
+
  const Section =styled(BlockDiv)`
  align-content:center;
  `;
-  const FlexDiv=styled.div.attrs(props =>{
-    let width = useWindowWidth(window.innerWidth)
-     return {
-             pageWidth: width
-     }
-    })`
-    display:flex;
-    align-items:center;
-    flex-direction: column;
-    justify-content:space-evenly;
-    padding:1vh 1vw;
-    margin:1vh 1vw;
-    `;
- const SubSection=styled(FlexDiv)`
- flex-direction: ${({pageWidth}) => pageWidth < 480 ?  "column" : "row"};
- gap:${({pageWidth}) => pageWidth < 480 ?  "10px" : "0"};
- `;
+
+
+
+ 
+
  const Reusepara= styled(FlexDiv)`
  // padding: 3vh 1vw;
   //margin:3vh 1vw;
@@ -202,28 +166,7 @@ line-height: 1.5rem; /* 120% */`;
 
 `;
 
-  const Button=styled.button.attrs(props =>{
-    let width = useWindowWidth(window.innerWidth)
-    return {
-            pageWidth: width
-    }
-  })`
-  font-family: ${({ffamily}) => ffamily || "Roboto"};
-  font-size:  ${({fontSize}) => fontSize || "20px"};  //"1.25rem"
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  border-radius:15px;   //1.5rem;
-  background-Color: ${({backgroundColor}) => backgroundColor || "#059950"}; 
-  padding:1vh 3vw;   //0.625rem 2.25rem;
-  text-align:center;
-  //float:${({pageWidth}) => pageWidth < 480 ?  "right" : "left"};
-  justify-content: ${({pageWidth}) => pageWidth < 480 ? "right" : "left"};
-  align-items:center;
-  //align-content:center;
-  margin:1vh 1vw;
-  
-  `;
+
 
  const WhiteButton=styled(Button)`
  color: ${({fontColor}) => fontColor || "white"};
@@ -254,7 +197,7 @@ const CardText =styled.p.attrs(props =>{
             pageWidth: width
     }
   })`
-  color: ${({fontColor}) => fontColor || "#151B1F;"};
+  color: ${({fontColor}) => fontColor || "#000000"};
   font-size:  ${({pageWidth}) => pageWidth < 480 ? "18px" : "16px"};// ${({fontSize}) => fontSize || "1.125rem"};
   font-family:  ${({ffamily}) => ffamily || "Roboto"};
   font-style: normal;
@@ -263,6 +206,7 @@ const CardText =styled.p.attrs(props =>{
   padding:1vh 1vw;//10px;
   text-align:center;
   `;
+
 const Description =styled.p.attrs(props =>{
   let width = useWindowWidth(window.innerWidth)
     return {
@@ -310,20 +254,8 @@ const Img = styled.img.attrs(props =>{
        background:  darkgray -65.093px -29.75px / 138.822% 119.444% no-repeat;
             
          `;
-         const CardImage =styled(Img)`
-         width: ${({width, pageWidth}) => width || (pageWidth < 480 ? "90%" : "25vw") };
-         height: ${({height}) => height || "auto"};
-         margin: 1vh 2vw;
-          `;
-          const HeroSectionImage =styled(Img)`
-         margin: 1vh 2vw;
-         width: ${({width, pageWidth}) => width || (pageWidth < 480 ? "80%" : "40vw") };
-         height: ${({height}) => height || "auto"};
-         padding:5px;
-          margin-left: 30px;
-          border:2px solid #2B6F50;
-         border-radius: 1.875rem;  
-          `;
+
+
           const TechnologySecImage =styled(Img)`
          margin: 1VH 2VW;
          width: ${({width, pageWidth}) => width || (pageWidth < 480 ? "85%" : "35vw") };
@@ -336,58 +268,9 @@ const Img = styled.img.attrs(props =>{
          border-radius: 10.5rem;
         
           `;
-          const LRImage =styled(Img)`
-         margin: 1vh 2vw;
-         width:${({width, pageWidth}) => width || (pageWidth < 480 ? "38.625rem" : "38.625rem") };
-         height:15.125rem ;
-         float:left;
 
-          `;
-          const RLImage =styled(Img)`
-         margin: 1vh 2vw;
-         width: ${({width, pageWidth}) => width || (pageWidth < 480 ? "75%" : "25vw") };
-         height: ${({height}) => height || "auto"};
-         padding:5px;
-          margin-left: 30px;
-          `;
          
- const Title=styled.h3`
- color: #000;
-text-align: center;
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-font-style: normal;
-line-height: normal;
-letter-spacing: 1px;
-font-family:${({ffamily}) => ffamily || "Open Sans"} ;
-font-size: ${({fontSize}) => fontSize || "1.25rem"};
-font-weight: 700;
 
- `;
- const SectionTitle=styled.p.attrs(props =>{
-  let width = useWindowWidth(window.innerWidth)
-  return {
-          pageWidth: width
-  }
-})`
- font-family:${({ffamily}) => ffamily || "Open Sans"} ;
- font-size: ${({fontSize}) => fontSize || "1.5rem"}; /*1.25rem*/
- font-weight: 600;
-color: #000;
-text-align: center;
-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-font-style: normal;
-line-height: normal;
-letter-spacing: 1px;
-align-items:center;
- `;
- const SubTitle=styled(Title)`
- text-decoration:underline 2px solid #059950;
- font-family:${({ffamily}) => ffamily || "Open Sans"} ;
- font-size: ${({fontSize}) => fontSize || "1.5rem"}; 
- font-weight: 700;
- text-underline-offset: 11px;
-            
- `;
  
 const Card=styled.div.attrs(props =>{
  let width = useWindowWidth(window.innerWidth)
