@@ -4,32 +4,32 @@ import useWindowWidth from './WindowWidth.js';
 
 
 //Block Section 
-const SectionBlock=styled.div`
+ export const SectionBlock=styled.div`
 display: block;
 text-align: center;
 `;
 
-const BlockDiv=styled.div`
+export const BlockDiv=styled.div`
  display:block;
  text-align: center;
  padding:1vh 1vw;
  `;
 
- const Section =styled(BlockDiv)`
+ export const Section =styled(BlockDiv)`
  align-content:center;
  `;
 
- const HeroSection=styled(BlockDiv)``;
+ export const HeroSection=styled(BlockDiv)``;
 
 //FlexBox Section
-const flexSection=styled.div`
+export const flexSection=styled.div`
 display: flex;
 flex-wrap: wrap;
 text-align: center;
 align-item:center;
 `;
 
-const FlexDiv=styled.div.attrs(props =>
+export const FlexDiv=styled.div.attrs(props =>
 {
     let width = useWindowWidth(window.innerWidth)
     return {
@@ -40,9 +40,10 @@ display:flex;
 align-items:center;
 justify-content:space-evenly;
 padding:1vh 1vw;
+flex-direction: column;
 `;
 
-const SubSection=styled(FlexDiv)`
+export const SubSection=styled(FlexDiv)`
 flex-direction: ${({pageWidth}) => pageWidth < 480 ?  "column" : "row"};
 gap:${({pageWidth}) => pageWidth < 480 ?  "10px" : "0"};
 margin:1vh 1vw;

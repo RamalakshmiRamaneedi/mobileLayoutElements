@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import styled , { css } from "styled-components";
 //import iguana from './components/Navbar/iguana.jpg';
-import food from './components/Navbar/food.jpg';
-import zero from './components/Navbar/zero.jpg';
+import {flexSection,FlexDiv,SubSection} from './components/LayoutComponents.js';
+import useWindowWidth from './components/WindowWidth.js';
+
+import {HeroSectionImage,CardImage,Button,SubTitle,SectionTitle,Title,SectionText} from './components/UIComponents';
 import  {useState, useEffect} from "react";
 import veg from './components/Navbar/veg.jpg';
 import logo from './components/Navbar/Greenlogo.svg';
@@ -19,7 +21,8 @@ const PFontFactor = (width) =>{
 
 
 
-const useWindowWidth = () => {
+
+/*const useWindowWidth = () => {
     const [width, setWidth] = useState(window.innerWidth);
   
     useEffect(() => {
@@ -32,7 +35,7 @@ const useWindowWidth = () => {
     }, []);
     // console.log("The window width is", width);
     return width;
-}
+}*/
       
   
 const T32V=styled.h1`
@@ -93,50 +96,6 @@ font-weight: 400;
 line-height: normal;
 `;
 
- const CardDiv=styled.div.attrs(props =>{
-  let width = useWindowWidth(window.innerWidth)
-  return {
-          pageWidth: width
-  }
- })`
- border-radius: 1.25rem;
-background: #FFF;
-box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25); 
- max-width: 30%;
- float:center;
- `;
-
-const SectionBlock=styled.div`
-display: block;
-text-align: center;
-background-color: green;
-`;
-
-
-const flexSection=styled.div`
-display: flex;
-flex-wrap: wrap;
- text-align: center;
-        align-item:center;
-        justify-content: space-between;
-`;
-
- const SectionPara=styled.p.attrs(props =>{
-  let width = useWindowWidth(window.innerWidth)
-  return {
-          pageWidth: width
-  }
-})`
- 
- color: #000;
-text-align: center;
-font-family: Open Sans;
-font-size: ${({pageWidth}) => pageWidth < 480 ? "20px" : `calc(2em + ${2*PFontFactor(pageWidth)}px)`};/*1.25rem*/;
-font-style: normal;
-font-weight: 400;
-line-height: 1.5rem; /* 120% */`;
-
-
  const BlockDiv=styled.div`
  display:block;
  padding:1vh 1vw;
@@ -168,15 +127,16 @@ line-height: 1.5rem; /* 120% */`;
 
 
 
- const WhiteButton=styled(Button)`
- color: ${({fontColor}) => fontColor || "white"};
+  const WhiteButton=styled(Button)`
+  background-color:white;
+ color: ${({fontColor}) => fontColor || "#059950"};
 `;
-const GreenButton=styled(WhiteButton)`
-background-color:white ;
-color: ${({fontColor}) => fontColor || "#059950"};
+ const GreenButton=styled(Button)`
+background-color:#059950 ;
+color: ${({fontColor}) => fontColor || "white"};
  `;
 
-const Para = styled.p.attrs(props =>{
+ export const Para = styled.p.attrs(props =>{
 let width = useWindowWidth(window.innerWidth)
   return {
           pageWidth: width
@@ -191,7 +151,7 @@ font-weight: 400;
 padding:1vh 1vw;;
 text-align:justify;
 `;
-const CardText =styled.p.attrs(props =>{
+export const CardText =styled.p.attrs(props =>{
   let width = useWindowWidth(window.innerWidth)
     return {
             pageWidth: width
@@ -207,7 +167,7 @@ const CardText =styled.p.attrs(props =>{
   text-align:center;
   `;
 
-const Description =styled.p.attrs(props =>{
+export const Description =styled.p.attrs(props =>{
   let width = useWindowWidth(window.innerWidth)
     return {
             pageWidth: width
@@ -224,7 +184,7 @@ margin:1vh 1vw;
 padding:1vh 1vw;
 
 `;
- const Text=styled.p.attrs(props =>{
+export const Text=styled.p.attrs(props =>{
       let width = useWindowWidth(window.innerWidth)
       return {
               pageWidth: width
@@ -240,7 +200,7 @@ line-height: 48px; //3rem; /* 150% */
 margin:1vh 1vw;
 padding:1vh 1vw;
 `;
-const Img = styled.img.attrs(props =>{
+export const Img = styled.img.attrs(props =>{
       let width = useWindowWidth(window.innerWidth)
       return {
               pageWidth: width
@@ -272,7 +232,7 @@ const Img = styled.img.attrs(props =>{
          
 
  
-const Card=styled.div.attrs(props =>{
+ export const Card=styled.div.attrs(props =>{
  let width = useWindowWidth(window.innerWidth)
   return {
           pageWidth: width
@@ -289,7 +249,7 @@ box-shadow: 4px 4px 8px 8px rgba(0, 0, 0, 0.25);
 margin:1vh 1vw;
 row-gap:1px;
 `;
-const Footer=styled.div`
+ const Footer=styled.div`
 display: flex;
 /*width: ${({width, pageWidth}) => width || (pageWidth < 480 ? "75%" : "25vw") }; *//* var(--ScreenWidth, 24.375rem);*/
 height: 4.75rem;
@@ -311,7 +271,7 @@ const App = () => {
               <HeroSectionImage src={image75} alt="image75" /> 
               <FlexDiv>
                <Para>Solutions to eliminate non-recyclable waste from commercial facilities to households</Para>
-              <WhiteButton>Learn More</WhiteButton>
+              <GreenButton>Learn More</GreenButton>
               </FlexDiv>
            </SubSection>     
               
@@ -363,7 +323,7 @@ const App = () => {
           
          <Reusepara>
            <Text>A reuse paradigm to eliminate waste that recycling never will</Text>
-           <GreenButton>Learn More</GreenButton>
+           <WhiteButton>Learn More</WhiteButton>
          </Reusepara>
          
         <Section>
